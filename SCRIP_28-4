@@ -1,0 +1,37 @@
+CREATE DATABASE DAMIR_BD; 
+USE DAMIR_BD;
+
+CREATE TABLE Estudiantes(
+id int primary key,
+nombre varchar(50),
+FechaNacimento date
+);
+
+select * from Estudiantes;
+INSERT INTO Estudiantes(ID, Nombre, FechaNacimento)
+values (1, 'valentino','2006-11-10'),
+(2, 'Santiago','2006-10-19');
+
+delete from Estudiantes where id=1;
+
+create table Materias (
+Codigo INT PRIMARY KEY IDENTITY(1,1), 
+Nombre Varchar(50)
+);
+INSERT INTO Materias (NOMBRE) VALUES ( 'MANTENIMIENTO III'),('PROGRAMACION');
+SELECT * FROM Materias
+delete from Materias where CODIGO=1;
+
+create table Inscripciones(
+EstudiantesID INT,
+MateriaCodigo INT,
+foreign KEY (EstudiantesID) REFERENCES Estudiantes(ID),
+foreign KEY (MateriaCodigo) REFERENCES Materias(codigo),
+);
+
+SELECT * FROM Inscripciones;
+SELECT * FROM Estudiantes;
+SELECT * FROM Materias;
+
+INSERT INTO Inscripciones (EstudiantesID, MateriaCodigo)
+VALUES (1,2);
